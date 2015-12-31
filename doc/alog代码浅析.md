@@ -57,18 +57,18 @@ modules['moduleName'] = {
 ### alog 的同步方法与异步方法的区别：
 
 * 同步方法会在模块加载完，才开始绑定点击事件，所以可能会丢失加载前的点击。同步方法适合用户模块定义内部。
-* 异步方法在执行代码后生效，如果使用的模块还没加载完，会先放到事件队列里，等模块加载完成并执行 start 方法后，会自动执行事件队列里的事件。
+* 异步方法在执行代码后生效，如果使用的模块还没加载完，会先放到事件队列里，等模块加载完成并执行 create 方法后，会自动执行事件队列里的事件。
 
 ### alog 中 tracker 与 module 的区别与联系
 
 虽然 tracker 和 module 看起来很相似，而且在定义 module 和创建 tracker 的时候，使用的都是同样的名称，但是它们还是不同的概念：
 	
-#####1. module 不是必需的
+##### 1. module 不是必需的
 
 当在执行的统计非常简单的时候，例如 PV 的统计，则可以完全不需要使用 module 而直接完成对应功能：
 
 ```javascript
-alog('pv.start', {
+alog('pv.create', {
     postUrl: 'http://localhost/v.gif'
 });
 alog('pv.send', 'pageview');
